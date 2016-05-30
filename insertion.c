@@ -10,15 +10,6 @@ void fillRandom (int *numbers, int n){
     }
 }
 
-void printNumbers(int *numbers, int n)
-{
-    int i;
-    for (i = 0; i < n; i++) {
-        printf("%d ", numbers[i]);
-    }
-    printf("\n\n");
-}
-
 void insertionSort(int original[], int length)
 {
 	int i, j, atual;
@@ -39,20 +30,18 @@ void insertionSort(int original[], int length)
 }
 
 int main(int argc, char const *argv[]) {
-
+    clock_t t1, t2;
     int size;
     printf("Tamanho:\n");
     scanf("%d", &size);
 
     int numbers[size];
-
     fillRandom(numbers, size);
 
-    printNumbers(numbers, size);
-
+    t1 = clock();
     insertionSort(numbers, size);
+    t2 = clock();
 
-    printNumbers(numbers, size);
-
+    printf("tempo = %.3e segundos\n", ((double)t2 - (double)t1) / (double)CLOCKS_PER_SEC );
     return 0;
 }
